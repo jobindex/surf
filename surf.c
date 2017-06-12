@@ -1344,6 +1344,7 @@ createwindow(Client *c)
 
 		wmstr = g_path_get_basename(argv0);
 		gtk_window_set_wmclass(GTK_WINDOW(w), wmstr, "Surf");
+		gtk_window_iconify(GTK_WINDOW(w));
 		g_free(wmstr);
 
 		wmstr = g_strdup_printf("%s[%lu]", "Surf",
@@ -1451,6 +1452,7 @@ loadchanged(WebKitWebView *v, WebKitLoadEvent e, Client *c)
 		    enablescrollbars ? "auto" : "hidden");
 		*/
 		runscript(c);
+		gtk_window_present(GTK_WINDOW(c->win));
 		break;
 	}
 	updatetitle(c);
