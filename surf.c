@@ -202,6 +202,7 @@ static void responsereceived(WebKitDownload *d, GParamSpec *ps, Client *c);
 static void download(Client *c, WebKitURIResponse *r);
 static void closeview(WebKitWebView *v, Client *c);
 static void destroywin(GtkWidget* w, Client *c);
+static void closewebview(WebKitWebView *v, Client *c);
 
 /* Hotkeys */
 static void pasteuri(GtkClipboard *clipboard, const char *text, gpointer d);
@@ -1014,6 +1015,8 @@ newview(Client *c, WebKitWebView *rv)
 			 G_CALLBACK(permissionrequested), c);
 	g_signal_connect(G_OBJECT(v), "ready-to-show",
 			 G_CALLBACK(showview), c);
+	g_signal_connect(G_OBJECT(v), "close",
+			 G_CALLBACK(closewebview), c);
 
 	return v;
 }
@@ -1461,6 +1464,13 @@ destroywin(GtkWidget* w, Client *c)
 	destroyclient(c);
 	if (!clients)
 		gtk_main_quit();
+}
+
+void
+closewebview(WebKitWebView *v, Client *c)
+{
+	fprintf(stderr,"Got a window.close");
+	exit(0);
 }
 
 void
