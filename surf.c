@@ -1358,6 +1358,9 @@ createwindow(Client *c)
 		gtk_window_set_default_size(GTK_WINDOW(w), winsize[0], winsize[1]);
 	}
 
+	GdkRGBA black = { 0 };
+	gtk_widget_override_background_color(w, GTK_STATE_NORMAL, &black);
+
 	g_signal_connect(G_OBJECT(w), "destroy",
 	                 G_CALLBACK(destroywin), c);
 	g_signal_connect(G_OBJECT(w), "enter-notify-event",
