@@ -934,6 +934,8 @@ newview(Client *c, WebKitWebView *rv)
 		   "enable-accelerated-2d-canvas", curconfig[AcceleratedCanvas].val.b,
 		   "enable-site-specific-quirks", curconfig[SiteQuirks].val.b,
 		   "media-playback-requires-user-gesture", curconfig[MediaManualPlay].val.b,
+		   /* JIX settings */
+		   "enable-write-console-messages-to-stdout", 1,
 		   NULL);
 /* For mor interesting settings, have a look at
  * http://webkitgtk.org/reference/webkit2gtk/stable/WebKitSettings.html */
