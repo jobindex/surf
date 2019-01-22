@@ -1081,6 +1081,8 @@ newview(Client *c, WebKitWebView *rv)
 		   "enable-site-specific-quirks", curconfig[SiteQuirks].val.i,
 		   "enable-smooth-scrolling", curconfig[SmoothScrolling].val.i,
 		   "media-playback-requires-user-gesture", curconfig[MediaManualPlay].val.i,
+		   /* JIX settings */
+		   "enable-write-console-messages-to-stdout", 1,
 		   NULL);
 /* For more interesting settings, have a look at
  * http://webkitgtk.org/reference/webkit2gtk/stable/WebKitSettings.html */
